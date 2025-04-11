@@ -1,0 +1,138 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<title> JavaScript Calculator </title>
+<style>
+body{
+  background-color: beige;
+}
+h1 {
+    text-align: center;
+    padding: 23px;
+    background-color: rgb(11, 169, 241); 
+    color: white;
+}
+.raone{
+    margin: 5px;
+    font-weight: bold;
+    width: 30px;
+    text-align: center;
+    color: rgb(20, 5, 5);
+    border: 5px inset rgb(243, 237, 237); 
+    border-radius: 5px;
+    padding: 26px;  
+    font-size: 15px;
+    background: transparent;
+     
+  }
+  .raone:hover{
+  background-color: beige;
+  cursor: pointer;
+  color: rgb(17, 16, 16);
+}
+
+.formstyle {
+width: 300px;
+height: 550px;
+margin: auto;
+border: 3px solid purple; 
+border-radius: 5px;
+padding: 5px;
+}
+
+#calc{
+width: 250px;
+border: 5px solid black; 
+font-weight: bold;
+font-size: large;
+
+    border-radius: 3px;
+    padding: 20px;
+    margin: auto;
+    float: right;
+    color: rgb(21, 6, 6);
+    background: transparent;  
+}
+
+form{
+  background-color: greenyellow;
+  height: 550px;
+  box-shadow: outset 10px 10px 10px #c71212;
+  background-image: url( https://i.pinimg.com/originals/c3/95/8e/c3958ec8414f4b476e991750cf18187d.gif);
+}
+</style>
+</head>
+<body>
+<h1> Simple Calculator </h1>
+<div class="formstyle">
+<form name="form1">
+    <!-- This input box shows the button pressed by the user in calculator. -->
+  <input id="calc" type="text" name="answer"> <br> <br>
+  <!-- Display the calculator button on the screen. -->
+  <!-- onclick() function display the number pressed by the user. -->
+  <input type="button" value="AC" class="raone" onclick="form1.answer.value = '' " id="clear" >
+  <input type="button" value="C" class="raone" onclick="form1.answer.value = form1.answer.value.substring(0, form1.answer.value.length - 1) " id="clear" >
+  <input type="button" value="%" class="raone" onclick="form1.answer.value += '%' " id="clear" >
+  <input type="button" value="/" class="raone" onclick="form1.answer.value += '/' ">
+  <br>
+  <input type="button" value="7" class="raone" onclick="form1.answer.value += '7' ">
+  <input type="button" value="8" class="raone" onclick="form1.answer.value += '8' ">
+  <input type="button" value="9" class="raone" onclick="form1.answer.value += '9' ">
+  <input type="button" value="*"  class="raone"onclick="form1.answer.value += '*' ">
+  <br> 
+  <input type="button" value="4" class="raone" onclick="form1.answer.value += '4' ">
+  <input type="button" value="5" class="raone" onclick="form1.answer.value += '5' ">
+  <input type="button" value="6" class="raone" onclick="form1.answer.value += '6' ">
+  <input type="button" value="-" class="raone" onclick="form1.answer.value += '-' ">
+  <br> 
+
+  <input type="button" value="1" class="raone" onclick="form1.answer.value += '1' ">
+  <input type="button" value="2" class="raone" onclick="form1.answer.value += '2' ">
+  <input type="button" value="3" class="raone" onclick="form1.answer.value += '3' ">
+  <input type="button" value="+" class="raone" onclick="form1.answer.value += '+' ">
+  <br> 
+  <input type="button" value="Ex" class="raone" onclick="window.close()" id="clear" >
+  <input type="button" value="0" class="raone" onclick="form1.answer.value += '0' ">
+  <input type="button" value="." class="raone" onclick="form1.answer.value += '.' ">
+  
+  <input type="button" value="=" class="raone" onclick="form1.answer.value = eval(form1.answer.value) ">
+  <br>
+ 
+
+</form>
+</div>
+<script>
+// Perform the calculation based on the operation
+function calculate(operation, num1, num2) {
+  switch (operation) {
+    case '+':
+      return num1 + num2;
+    case '-':
+      return num1 - num2;
+    case '*':
+      return num1 * num2;
+    case '/':
+      // Check for division by zero
+      if (num2 === 0) {
+        return "Cannot divide by zero";
+      }
+      return num1 / num2;
+    case '%':
+      return (num1 / 100) * num2;
+    default:
+      return "Invalid operation";
+  }
+}
+// Main function to run the calculator
+function runCalculator() {
+  const operation = getOperation();
+  const { num1, num2 } = getNumbers();
+  const result = calculate(operation, num1, num2);
+  alert(`Result: ${result}`);
+}
+// Run the calculator
+runCalculator();</script>
+</body>
+</html>
